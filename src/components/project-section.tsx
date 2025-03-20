@@ -11,6 +11,10 @@ import {
 } from "@/components/ui/card";
 
 export default function ProjectsSection() {
+  if (!Array.isArray(projects) || projects.length === 0) {
+    return <p className="text-center text-gray-400">No projects available.</p>;
+  }
+
   return (
     <div className="container mx-auto px-4">
       <motion.div
@@ -20,7 +24,7 @@ export default function ProjectsSection() {
         viewport={{ once: true }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-bold mb-4">My Projects</h2>
+        <h2 className="text-3xl font-bold mb-4 text-white">My Projects</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
           A collection of projects I've worked on, showcasing my skills and
           experience in web development.
@@ -29,7 +33,11 @@ export default function ProjectsSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
+          <ProjectCard
+            key={project.id || index}
+            project={project}
+            index={index}
+          />
         ))}
       </div>
     </div>
@@ -55,32 +63,40 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
           </CardDescription>
 
           <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech: string) => (
+            {(Array.isArray(project.technologies)
+              ? project.technologies
+              : []
+            ).map((tech: string) => (
               <span
                 key={tech}
-                className="text-xs bg-primary/20 text-gray-500 px-2 py-1 rounded-full"
+                className="text-xs bg-primary/20 text-gray-300 px-2 py-1 rounded-full"
               >
                 {tech}
               </span>
             ))}
           </div>
+
           <div className="flex gap-2 mt-4">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-            >
-              GitHub
-            </a>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-            >
-              Live Demo
-            </a>
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition-all"
+              >
+                GitHub
+              </a>
+            )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition-all"
+              >
+                Live Demo
+              </a>
+            )}
           </div>
         </CardContent>
       </Card>

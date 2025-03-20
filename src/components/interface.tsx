@@ -1,12 +1,8 @@
 "use client";
-
-import type React from "react";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import type { ProjectType } from "../lib/types";
 import { Button } from "@/components/ui/button";
 import {
-  Home,
   Briefcase,
   User,
   Mail,
@@ -27,7 +23,7 @@ interface InterfaceProps {
 }
 
 export default function Interface({
-  activeProject,
+  activeProject, // Unused - remove if unnecessary
   setActiveProject,
   section,
   setSection,
@@ -121,28 +117,49 @@ export default function Interface({
         <div className="container mx-auto flex justify-center md:justify-end">
           <div className="flex space-x-2">
             <Button
+              asChild
               variant="ghost"
               size="icon"
               className="text-white hover:text-primary"
             >
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github className="h-5 w-5" />
+                <span className="sr-only">GitHub</span>
+              </a>
             </Button>
             <Button
+              asChild
               variant="ghost"
               size="icon"
               className="text-white hover:text-primary"
             >
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="h-5 w-5" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
             </Button>
             <Button
+              asChild
               variant="ghost"
               size="icon"
               className="text-white hover:text-primary"
             >
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
+              <a
+                href="https://twitter.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </a>
             </Button>
           </div>
         </div>
@@ -158,7 +175,7 @@ function NavButton({
   active,
   onClick,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   active: boolean;
   onClick: () => void;
@@ -168,7 +185,7 @@ function NavButton({
       variant={active ? "default" : "ghost"}
       size="sm"
       onClick={onClick}
-      className={active ? "" : "text-white hover:text-white"}
+      className={active ? "" : "text-gray-300 hover:text-primary"}
     >
       {icon}
       {label}
@@ -182,7 +199,7 @@ function MobileNavButton({
   active,
   onClick,
 }: {
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
   active: boolean;
   onClick: () => void;
@@ -191,7 +208,7 @@ function MobileNavButton({
     <Button
       variant={active ? "default" : "ghost"}
       className={`w-full justify-start ${
-        active ? "" : "text-white hover:text-white"
+        active ? "" : "text-gray-300 hover:text-primary"
       }`}
       onClick={onClick}
     >
