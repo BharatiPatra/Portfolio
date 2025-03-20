@@ -13,7 +13,6 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AboutSection from "./about-section";
 
 export default function ProfileCard() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -41,7 +40,6 @@ export default function ProfileCard() {
     const distanceY = ((e.clientY - centerY) / (rect.height / 2)) * 100;
     x.set(distanceX);
     y.set(distanceY);
-    setMousePosition({ x: distanceX, y: distanceY });
   };
 
   const handleMouseLeave = () => {

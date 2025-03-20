@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ProjectType } from "@/lib/types";
 
 export default function ProjectsSection() {
   if (!Array.isArray(projects) || projects.length === 0) {
@@ -44,7 +45,13 @@ export default function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project, index }: { project: any; index: number }) {
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: ProjectType;
+  index: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
