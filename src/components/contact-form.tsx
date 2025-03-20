@@ -48,7 +48,7 @@ export default function ContactForm() {
                 Message Sent!
               </h3>
               <p className="text-gray-400 mb-4">
-                Thanks for reaching out. I'll get back to you soon.
+                Thanks for reaching out. I&apos;ll get back to you soon.
               </p>
               <Button onClick={() => setIsSubmitted(false)}>
                 Send Another Message

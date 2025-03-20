@@ -8,7 +8,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
 import { Linkedin, Github, Mail, Download } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AboutSection from "./about-section";

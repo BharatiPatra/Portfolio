@@ -26,7 +26,7 @@ export default function ProjectsSection() {
       >
         <h2 className="text-3xl font-bold mb-4 text-white">My Projects</h2>
         <p className="text-gray-400 max-w-2xl mx-auto">
-          A collection of projects I've worked on, showcasing my skills and
+          A collection of projects I&apos;ve worked on, showcasing my skills and
           experience in web development.
         </p>
       </motion.div>

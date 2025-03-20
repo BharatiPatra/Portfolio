@@ -22,12 +22,7 @@ interface InterfaceProps {
   setSection: (section: string) => void;
 }
 
-export default function Interface({
-  activeProject, // Unused - remove if unnecessary
-  setActiveProject,
-  section,
-  setSection,
-}: InterfaceProps) {
+export default function Interface({ section, setSection }: InterfaceProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close mobile menu when section changes
