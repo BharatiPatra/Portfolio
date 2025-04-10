@@ -38,9 +38,9 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="relative w-full flex justify-end">
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 p-4 md:p-8 pointer-events-auto">
-        <div className="bg-black/80 backdrop-blur-md border border-gray-800 rounded-lg p-6 max-w-md w-full">
+    <div className="flex items-center justify-center min-h-screen px-4 w-[80%] mx-auto">
+      <div className="p-4 md:p-8 pointer-events-auto w-full  mx-auto">
+        <div className="bg-black/80 backdrop-blur-md border border-gray-800 rounded-lg p-6 w-full max-w-[700px]">
           <h2 className="text-2xl font-bold text-white mb-6">Get In Touch</h2>
 
           {isSubmitted ? (

@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { Suspense, useRef } from "react";
-import Scene from "@/components/scene"; 
+import Scene from "@/components/scene";
 import Loading from "@/components/loading";
 import ProjectsSection from "@/components/project-section";
 import ContactSection from "@/components/contact-section";
@@ -22,10 +22,10 @@ export default function About() {
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
   };
- 
+
   const handleClick = () => {
     scrollToSection(aboutRef);
-  }
+  };
   return (
     <main className="relative bg-black text-white">
       {/* 3D Scene Background */}
@@ -108,7 +108,7 @@ export default function About() {
         {/* Contact Section */}
         <section
           ref={contactRef}
-          className="min-h-screen flex items-center justify-center py-16"
+          className="min-h-screen flex items-center justify-center py-10 w-full px-4 sm:px-6 lg:px-8"
         >
           <ContactSection />
         </section>
