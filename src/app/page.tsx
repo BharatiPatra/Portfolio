@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { Suspense, useRef } from "react";
-import Scene from "@/components/scene"; // Use the alternative scene without post-processing if needed
+import Scene from "@/components/scene"; 
 import Loading from "@/components/loading";
 import ProjectsSection from "@/components/project-section";
 import ContactSection from "@/components/contact-section";
@@ -22,7 +22,10 @@ export default function About() {
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-
+ 
+  const handleClick = () => {
+    scrollToSection(aboutRef);
+  }
   return (
     <main className="relative bg-black text-white">
       {/* 3D Scene Background */}
@@ -36,7 +39,10 @@ export default function About() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
         <div className="container mx-auto flex justify-between items-center p-4">
           <div className="text-white font-bold text-xl">
-            <span className="text-primary">3D</span> Portfolio
+            <span className="text-primary">3D</span>{" "}
+            <span className="hover:cursor-pointer" onClick={handleClick}>
+              Portfolio
+            </span>
           </div>
 
           <div className="flex space-x-4">
