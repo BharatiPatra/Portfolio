@@ -1,8 +1,7 @@
 "use client";
 
 import type React from "react";
-
-import { Suspense, useRef } from "react";
+import { useState, useRef, Suspense } from "react";
 import Scene from "@/components/scene";
 import Loading from "@/components/loading";
 import ProjectsSection from "@/components/project-section";
@@ -17,35 +16,43 @@ export default function About() {
   const techStackRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: "smooth" });
+      setMobileMenuOpen(false); // Close menu after clicking a link
     }
   };
 
-  const handleClick = () => {
-    scrollToSection(aboutRef);
-  };
   return (
     <main className="relative bg-black text-white">
-      {/* 3D Scene Background */}
+      {/* 3D Background */}
       <div className="fixed inset-0 z-0">
         <Suspense fallback={<Loading />}>
           <Scene />
         </Suspense>
       </div>
 
-      {/* Fixed Navigation */}
+      {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-        <div className="container mx-auto flex justify-between items-center p-4">
-          <div className="text-white font-bold text-xl">
-            <span className="text-primary">3D</span>{" "}
-            <span className="hover:cursor-pointer" onClick={handleClick}>
-              Portfolio
-            </span>
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          {/* Logo */}
+          <div
+            className="text-white font-bold text-xl cursor-pointer sm:cursor-default"
+            onClick={() => {
+              if (window.innerWidth < 640) {
+                setMobileMenuOpen((prev) => !prev);
+              } else {
+                scrollToSection(aboutRef);
+              }
+            }}
+          >
+            <span className="text-primary">3D</span> <span>Portfolio</span>
           </div>
 
-          <div className="flex space-x-4">
+          {/* Desktop Nav */}
+          <div className="hidden sm:flex space-x-4">
             <button
               onClick={() => scrollToSection(aboutRef)}
               className="px-3 py-2 hover:text-gray-400 transition-colors"
@@ -72,23 +79,50 @@ export default function About() {
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="sm:hidden flex flex-col items-start px-4 pb-4 space-y-2 bg-black">
+            <button
+              onClick={() => scrollToSection(aboutRef)}
+              className="w-full text-left px-3 py-2 hover:bg-gray-800 rounded"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection(projectsRef)}
+              className="w-full text-left px-3 py-2 hover:bg-gray-800 rounded"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection(techStackRef)}
+              className="w-full text-left px-3 py-2 hover:bg-gray-800 rounded"
+            >
+              Tech Stack
+            </button>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="w-full text-left px-3 py-2 hover:bg-gray-800 rounded"
+            >
+              Contact
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Content Sections */}
       <div className="relative z-10">
-        {/* About Section */}
         <section
           ref={aboutRef}
-          className="min-h-screen flex items-center justify-center pt-16"
+          className="min-h-screen flex items-center justify-center pt-24 px-4"
         >
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto">
             <div className="flex flex-col items-center justify-center">
               <ProfileCardWithAnimation />
             </div>
           </div>
         </section>
-
-        {/* Projects Section*/}
 
         <section
           ref={projectsRef}
@@ -97,7 +131,6 @@ export default function About() {
           <ProjectsSection />
         </section>
 
-        {/* Tech Stack Section */}
         <section
           ref={techStackRef}
           className="min-h-screen flex items-center justify-center py-16 bg-gradient-to-b from-black/80 to-black/0"
@@ -105,7 +138,6 @@ export default function About() {
           <TechStackSection />
         </section>
 
-        {/* Contact Section */}
         <section
           ref={contactRef}
           className="min-h-screen flex items-center justify-center py-10 w-full px-4 sm:px-6 lg:px-8"
