@@ -8,7 +8,7 @@ export const projects: ProjectType[] = [
     description:
       "A job portal platform allowing users to find and post job listings.",
     github: "https://github.com/BharatiPatra/JOB_PORTAL.git",
-    link: "https://jobportal1111.netlify.app/",
+    link: "https://job-portal-five-vert.vercel.app/",
   },
   {
     id: "project-2",
@@ -21,10 +21,23 @@ export const projects: ProjectType[] = [
   },
   {
     id: "project-3",
-    title: "Blog with Appwrite",
-    technologies: ["React", "Appwrite", "Tailwind CSS"],
-    description: "A blogging platform utilizing Appwrite as a backend service.",
-    github: "https://github.com/BharatiPatra/Blog-App.git",
+    title: "Job AI",
+    technologies: [
+      "React",
+      "Typescript",
+      "Career AI",
+      "Tailwind CSS",
+      "FastAPI",
+      "TavilySearch API",
+      "Gemini 1.5 flash model",
+      "Langraph",
+      "Nano vector db",
+      "PathRAG",
+    ],
+    description:
+      "An AI-powered career assistant platform that provides personalized job insights, intelligent responses, and real-time data using Gemini 1.5, TavilySearch API, and PathRAG with vector search.",
+    github: "https://github.com/BharatiPatra/Asha_ai-chatbot.git",
+    link: "https://asha-ai-chatbot-j1om.vercel.app/",
   },
   {
     id: "project-4",
